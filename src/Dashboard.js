@@ -15,6 +15,7 @@ const Dashboard = () => {
   const shiftLeft = () => {
     let a = [...arr];
     const val = a[4];
+    a.pop();
     const updateArr = [];
     updateArr.push(val);
     updateArr.push(...a);
@@ -90,7 +91,7 @@ const Dashboard = () => {
             <img src={arrowDownIcon} alt="" className="w-6 h-6" />
           </div>
         </div>
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center ">
           <div className="p-2 px-6 rounded-lg bg-green-light font-semibold">
             {obj.name}
           </div>
