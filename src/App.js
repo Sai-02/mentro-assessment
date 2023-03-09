@@ -1,7 +1,10 @@
+import Dashboard from "./Dashboard";
 
 function App() {
   return (
-    <div className="text-center">Hi</div>
+    <div className="h-screen w-screen overflow-hidden">
+      <Dashboard />
+    </div>
   );
 }
 
