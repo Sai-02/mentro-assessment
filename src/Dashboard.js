@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import lightBG from "./assets/bg-light.png";
 import starIcon from "./assets/star.png";
 import arrowDownIcon from "../src/assets/arrowDown.svg";
 import { data } from "./data";
 const Dashboard = () => {
-  const [activeIndex, setActiveIndex] = useState(2);
   const [obj, setObj] = useState(data[2]);
   const [arr, setArr] = useState(data);
 
@@ -31,7 +29,7 @@ const Dashboard = () => {
     <div className="relative grid grid-cols-11 ">
       <div className="col-span-4">
         <div className="p-16 pt-20  ">
-          <p className="text-green-primary text-[50px]">4.9 </p>
+          <p className="text-green-primary text-[50px]">{obj.rating}</p>
           <p className="flex gap-3 mt-6">
             {[...Array(5)].map((val, index) => {
               return <img src={starIcon} key={index} className="w-4" />;

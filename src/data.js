@@ -1,6 +1,6 @@
 export const data = [
   {
-    rating: "4.9",
+    rating: "5.0",
     name: "Prankur Gupta",
     designation: "SDE @Amazon",
     comment:
