@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import lightBG from "./assets/bg-light.png";
 import starIcon from "./assets/star.png";
 import arrowDownIcon from "../src/assets/arrowDown.svg";
+import { data } from "./data";
 const Dashboard = () => {
+  const [activeIndex, setActiveIndex] = useState(2);
+  const [obj, setObj] = useState(data[2]);
+  const [arr, setArr] = useState(data);
+
+  useEffect(() => {
+    setObj(arr[2]);
+  }, [arr]);
+
+  const shiftLeft = () => {
+    let a = [...arr];
+    const val = a[4];
+    const updateArr = [];
+    updateArr.push(val);
+    updateArr.push(...a);
+    setArr([...updateArr]);
+  };
+  const shiftRight = () => {
+    const a = [...arr];
+    const val = a[0];
+    a.shift();
+    setArr([...a, val]);
+  };
   return (
     <div className="relative grid grid-cols-11 ">
       <div className="col-span-4">
@@ -13,14 +36,9 @@ const Dashboard = () => {
               return <img src={starIcon} key={index} className="w-4" />;
             })}
           </p>
-          <h2 className="text-[40px] font-semibold mt-4">Prankur Gupta </h2>
-          <p className="text-[24px]">SDE-2 @Amazon</p>
-          <p className="text-[1rem]">
-            I am Prankur Gupta, I am working as a Software Development Engineer
-            at Amazon. I can guide you throughout your preparation phase. Trust
-            me when I tell you this I know the exact recipe to crack the coding
-            interview rounds of top companies for the SDE role.
-          </p>
+          <h2 className="text-[40px] font-semibold mt-4">{obj.name}</h2>
+          <p className="text-[24px]">{obj.designation}</p>
+          <p className="text-[1rem]">{obj.comment}</p>
           <div className="">
             <button className="text-[white] bg-green-primary py-2 px-4 font-semibold box-shadow-green mt-4">
               Book a session
@@ -32,28 +50,49 @@ const Dashboard = () => {
         <div className="relative">
           <div className="absolute bottom-[-4rem] grid place-items-center w-full">
             <img
-              src="https://i.ibb.co/syVqWfT/Ellipse-25.png"
+              src={obj.url}
               className="w-32 h-32 rounded-full  bottom-[-3rem] left-[50%]"
               alt=""
             />
           </div>
-          <div className="bg-green-light rounded-bl-[450px] rounded-br-[450px] w-[900px] h-[450px]  overflow-hidden  ">
-            <div className="pt-12 overflow-hidden max-w-full max-h-full">
-              <div className="rounded-tl-[450px] rounded-tr-[450px] w-[900px] border-green-primary border-dashed border-2 h-[900px]"></div>
+          <div className="bg-green-light rounded-bl-[450px] rounded-br-[450px] w-[900px] h-[450px]  overflow-hidden grid place-items-center  ">
+            <div className="pt-4  max-w-full max-h-full">
+              <div className="rounded-full w-[580px] border-green-primary border-dashed border-2 h-[580px] relative ">
+                {arr.map((val, index) => {
+                  return (
+                    <img
+                      src={val.url}
+                      alt=""
+                      className="w-24 h-24 rounded-full absolute top-[50%] left-[50%] margin-[50%] "
+                      style={{
+                        transform: `rotate(${
+                          315 * index
+                        }deg) translate(300px) rotate(-${315 * index}deg)`,
+                      }}
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex justify-between px-6">
-          <div className="w-10 h-10 rounded-full bg-green-primary grid place-items-center">
+        <div className="flex justify-between px-6 mt-16">
+          <div
+            className="w-10 h-10 rounded-full bg-green-primary grid place-items-center"
+            onClick={shiftLeft}
+          >
             <img src={arrowDownIcon} alt="" className="w-6 h-6" />
           </div>
-          <div className="w-10 h-10 rounded-full bg-green-primary grid place-items-center">
+          <div
+            className="w-10 h-10 rounded-full bg-green-primary grid place-items-center"
+            onClick={shiftRight}
+          >
             <img src={arrowDownIcon} alt="" className="w-6 h-6" />
           </div>
         </div>
         <div className="flex justify-center mt-10">
           <div className="p-2 px-6 rounded-lg bg-green-light font-semibold">
-            Prankur Gupta
+            {obj.name}
           </div>
         </div>
       </div>
