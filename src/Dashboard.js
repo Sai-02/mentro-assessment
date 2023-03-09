@@ -70,6 +70,7 @@ const Dashboard = () => {
                           315 * index
                         }deg) translate(300px) rotate(-${315 * index}deg)`,
                       }}
+                      loading="lazy"
                     />
                   );
                 })}
