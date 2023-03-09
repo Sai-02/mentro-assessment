@@ -80,13 +80,13 @@ const Dashboard = () => {
         </div>
         <div className="flex justify-between px-6 mt-16">
           <div
-            className="w-10 h-10 rounded-full bg-green-primary grid place-items-center"
+            className="w-10 h-10 rounded-full bg-green-primary grid place-items-center cursor-pointer"
             onClick={shiftLeft}
           >
             <img src={arrowDownIcon} alt="" className="w-6 h-6" />
           </div>
           <div
-            className="w-10 h-10 rounded-full bg-green-primary grid place-items-center"
+            className="w-10 h-10 rounded-full bg-green-primary grid place-items-center cursor-pointer"
             onClick={shiftRight}
           >
             <img src={arrowDownIcon} alt="" className="w-6 h-6" />
